@@ -52,4 +52,16 @@ public class BoardService {
 		boardDao.writeBoard(boardMap);
 	}
 	
+	public BoardVo selectModifyInfo(int no) {
+		System.out.println("[BoardService.selectModifyInfo()]");
+		
+		return boardDao.getModifyInfo(no);
+	}
+	
+	public void boardModify(BoardVo boardVo) {
+		System.out.println("[BoardService.boardModify()]");
+		
+		boardDao.updateBoard(boardVo);
+	}
+	
 }

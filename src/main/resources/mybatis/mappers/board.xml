@@ -59,6 +59,30 @@
 		]]>
 	</insert>
 
+	<!-- 게시판 수정시 글 정보 가져오는 쿼리문 -->
+	<select id="getModifyInfo" parameterType = "int" resultType="com.javaex.vo.BoardVo">
+		<![CDATA[
+			select u.name,
+       			   b.hit,
+                   b.reg_date as regDate,
+       		       b.title,
+       			   b.content,
+       			   b.no
+			from board b, users u
+			where b.user_no = u.no
+			and b.no = #{no}
+		]]>
+	</select>
 
+	<!-- 게시판 정보 수정하는 쿼리문 -->
+	<update id="updateBoard" parameterType = "com.javaex.vo.BoardVo">
+		<![CDATA[
+			UPDATE board
+			set title = #{title},
+    			content = #{content}
+			where no = #{no}
+		]]>
+	</update>
+	
 
 </mapper>

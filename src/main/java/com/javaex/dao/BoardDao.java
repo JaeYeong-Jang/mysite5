@@ -48,4 +48,16 @@ public class BoardDao {
 		sqlSession.insert("board.insertBoard", boardMap);
 	}
 	
+	public BoardVo getModifyInfo(int no) {
+		System.out.println("[BoardDao.getModifyInfo()]");
+		
+		return sqlSession.selectOne("board.getModifyInfo",no);
+	}
+	
+	public void updateBoard(BoardVo boardVo) {
+		System.out.println("[BoardDao.updateBoard()]");
+		
+		sqlSession.update("board.updateBoard",boardVo);
+	}
+	
 }

@@ -23,11 +23,11 @@
 		<!-- /header nav -->
 
 		<div id="container" class="clearfix">
-		
+
 			<!-- aside -->
 			<c:import url="/WEB-INF/views/includes/asideBoard.jsp"></c:import>
 			<!-- aside -->
-			
+
 			<div id="content">
 
 				<div id="content-head">
@@ -70,9 +70,17 @@
 							<div id="txt-content">
 								<span class="form-value">${boardVo.content }</span>
 							</div>
-
-							<a id="btn_modify" href="">수정</a>
-							<a id="btn_modify" href="${pageContext.request.contextPath }/board/list">목록</a>
+							<c:choose>
+								<c:when test="${boardVo.userNo eq authUser.no }">
+									<a id="btn_modify"
+										href="${pageContext.request.contextPath }/board/modifyForm?no=${boardVo.no}">수정</a>
+								</c:when>
+								<c:otherwise>
+									<p></p>
+								</c:otherwise>
+							</c:choose>
+							<a id="btn_modify"
+								href="${pageContext.request.contextPath }/board/list">목록</a>
 
 						</form>
 						<!-- //form -->
